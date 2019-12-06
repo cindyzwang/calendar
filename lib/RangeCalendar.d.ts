@@ -1,0 +1,131 @@
+import React, { CSSProperties } from 'react';
+import moment, { Moment } from 'moment';
+import { CalendarTypeMode } from './date/DateInput';
+declare function noop(): void;
+interface RangeCalendarProps {
+    mode?: CalendarTypeMode;
+    selectedValue?: Moment[];
+    defaultSelectedValue?: Moment[];
+    type?: 'both' | 'start' | 'end';
+    value?: Moment[];
+    prefixCls?: string;
+    seperator?: string;
+    timePicker?: JSX.Element;
+    showDateInput?: boolean;
+    onChange?: (value: Moment[]) => void;
+    onSelect?: (value: Moment[], cause?: any) => void;
+    onKeyDown?: React.MouseEventHandler<HTMLDivElement>;
+    disabledTime?: (value: Moment[], type?: string) => {
+        disabledHours: () => any[];
+        disabledMinutes: (hour?: any) => any[];
+        disabledSeconds: (hour?: any, minute?: any) => any[];
+    };
+    disabledDate?: (value: Moment | Moment[], type?: string) => boolean;
+    onPanelChange?: (value: Moment[], type?: string[] | string) => void;
+    onValueChange?: (value: Moment[]) => void;
+    onHoverChange?: (value: Moment[]) => void;
+    onClear?: () => void;
+    onOk?: (value: Moment[]) => void;
+    clearIcon?: React.ReactNode;
+    showOk?: boolean;
+    locale: {
+        [key: string]: any;
+    };
+    showClear?: boolean;
+    showToday?: boolean;
+    showWeekNumber?: boolean;
+    dateInputPlaceholder?: string;
+    renderSidebar?: () => React.ReactNode;
+    style?: CSSProperties;
+    className?: string;
+    visible?: boolean;
+    renderFooter?: () => void;
+    format?: string;
+}
+interface RangeCalendarState {
+    value?: Moment[];
+    mode?: CalendarTypeMode[];
+    selectedValue?: Moment[];
+    showTimePicker?: boolean;
+    hoverValue?: Moment[];
+    panelTriggerSource?: 'start' | 'end' | '';
+    firstSelectedValue?: Moment;
+    prevSelectedValue?: Moment[];
+}
+declare class RangeCalendar extends React.Component<RangeCalendarProps, RangeCalendarState> {
+    static defaultProps: {
+        type: string;
+        seperator: string;
+        defaultSelectedValue: any[];
+        onValueChange: typeof noop;
+        onHoverChange: typeof noop;
+        onPanelChange: typeof noop;
+        disabledTime: typeof noop;
+        onInputSelect: typeof noop;
+        showToday: boolean;
+        showDateInput: boolean;
+        locale: any;
+        style: {};
+        visible: boolean;
+        prefixCls: string;
+        className: string;
+        onSelect: () => void;
+        onChange: () => void;
+        onClear: () => void;
+        renderFooter(): any;
+        renderSidebar(): any;
+    };
+    rootInstance: HTMLElement;
+    saveRoot: (root: any) => void;
+    focus: () => void;
+    getFormat: () => string;
+    shouldComponentUpdate(nextProps: any): any;
+    constructor(props: any);
+    onDatePanelEnter: () => void;
+    onDatePanelLeave: () => void;
+    onSelect: (value: any) => void;
+    onKeyDown: (event: any) => void;
+    onDayHover: (value: any) => any[];
+    onToday: () => void;
+    onOpenTimePicker: () => void;
+    onCloseTimePicker: () => void;
+    onOk: () => void;
+    onStartInputChange: (...oargs: any[]) => any;
+    onEndInputChange: (...oargs: any[]) => any;
+    onStartInputSelect: (value: any) => any;
+    onEndInputSelect: (value: any) => any;
+    onStartValueChange: (leftValue: any) => void;
+    onEndValueChange: (rightValue: any) => void;
+    onStartPanelChange: (value: any, mode: any) => void;
+    onEndPanelChange: (value: any, mode: any) => void;
+    static getDerivedStateFromProps(nextProps: any, state: any): RangeCalendarState;
+    getStartValue: () => moment.Moment;
+    getEndValue: () => moment.Moment;
+    getEndDisableTime: () => {
+        disabledHours: () => any[];
+        disabledMinutes: (hour?: any) => any[];
+        disabledSeconds: (hour?: any, minute?: any) => any[];
+    };
+    isAllowedDateAndTime: (selectedValue: any) => boolean;
+    isMonthYearPanelShow: (mode: any) => boolean;
+    hasSelectedValue: () => boolean;
+    compare: (v1: any, v2: any) => any;
+    fireSelectValueChange: (selectedValue: any, direct?: boolean, cause?: any) => void;
+    fireValueChange: (value: any) => void;
+    fireHoverValueChange: (hoverValue: any) => void;
+    clear: () => void;
+    disabledStartTime: (time: any) => {
+        disabledHours: () => any[];
+        disabledMinutes: (hour?: any) => any[];
+        disabledSeconds: (hour?: any, minute?: any) => any[];
+    };
+    disabledEndTime: (time: any) => {
+        disabledHours: () => any[];
+        disabledMinutes: (hour?: any) => any[];
+        disabledSeconds: (hour?: any, minute?: any) => any[];
+    };
+    disabledStartMonth: (month: any) => any;
+    disabledEndMonth: (month: any) => any;
+    render(): JSX.Element;
+}
+export default RangeCalendar;

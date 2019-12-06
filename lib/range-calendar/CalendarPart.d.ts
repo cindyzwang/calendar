@@ -1,0 +1,60 @@
+import React, { CSSProperties } from 'react';
+import { Moment } from 'moment';
+import { CalendarTypeMode } from '../date/DateInput';
+interface CalendarPartProps {
+    mode?: CalendarTypeMode;
+    selectedValue?: Moment | Moment[];
+    type?: 'both' | 'start' | 'end';
+    value?: Moment | Moment[];
+    hoverValue?: Moment[];
+    prefixCls?: string;
+    seperator?: string;
+    timePicker?: JSX.Element;
+    showDateInput?: boolean;
+    onChange?: (value: Moment[]) => void;
+    onSelect?: (value: Moment[], cause?: any) => void;
+    onKeyDown?: React.MouseEventHandler<HTMLDivElement>;
+    disabledTime?: (value: Moment[], type?: string) => {
+        disabledHours: () => any[];
+        disabledMinutes: (hour?: any) => any[];
+        disabledSeconds: (hour?: any, minute?: any) => any[];
+    };
+    disabledDate?: (value: Moment | Moment[], type?: string) => boolean;
+    onPanelChange?: (value: Moment | Moment[], type?: string[] | string) => void;
+    onValueChange?: (value: Moment | Moment[]) => void;
+    onHoverChange?: (value: Moment | Moment[]) => void;
+    onClear?: () => void;
+    onOk?: (value: Moment | Moment[]) => void;
+    clearIcon?: React.ReactNode;
+    showOk?: boolean;
+    locale: {
+        [key: string]: any;
+    };
+    showClear?: boolean;
+    showToday?: boolean;
+    showWeekNumber?: boolean;
+    placeholder?: string;
+    renderSidebar?: () => React.ReactNode;
+    style?: CSSProperties;
+    className?: string;
+    visible?: boolean;
+    renderFooter?: () => void;
+    format?: string;
+    direction?: 'left' | 'right';
+    enableNext?: boolean;
+    enablePrev?: boolean;
+    inputMode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+    onInputSelect?: (value: Moment) => void;
+    onInputChange?: (value: Moment) => void;
+    showTimePicker?: boolean;
+    timePickerDisabledTime?: {
+        disabledHours: () => any[];
+        disabledMinutes: (hour?: any) => any[];
+        disabledSeconds: (hour?: any, minute?: any) => any[];
+    };
+    disabledMonth?: (value: Moment) => boolean;
+    onDayHover?: (current: Moment, value: Moment) => void;
+    dateRender?: (current: Moment, value: Moment) => React.ReactNode;
+}
+declare const CalendarPart: React.FC<CalendarPartProps>;
+export default CalendarPart;

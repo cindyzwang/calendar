@@ -1,0 +1,12 @@
+import moment, { Moment } from 'moment';
+export declare function getTodayTime(value: any): moment.Moment;
+export declare function getTitleString(value: any): any;
+export declare function getTodayTimeStr(value: any): any;
+export declare function getMonthName(month: any): any;
+export declare function getWeekRangeStr(week: number, format?: string): string;
+export declare function syncTime(from: any, to: any): void;
+export declare function getTimeConfig(value: any, disabledTime: any): any;
+export declare function isTimeValidByConfig(value: any, disabledTimeConfig: any): boolean;
+export declare function isTimeValid(value: any, disabledTime: any): boolean;
+export declare function isAllowedDate(value: Moment, disabledDate: (value: Moment) => boolean, disabledTime?: any): boolean;
+export declare function formatDate(value: any, format: any): any;
