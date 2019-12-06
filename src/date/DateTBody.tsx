@@ -39,6 +39,7 @@ export interface DateTBodyProps {
   // onSelect?: (current: Moment | null, value: Moment) => void;
   onSelect?: any;
   onDayHover?: (current: Moment | null, value: Moment) => void;
+  weekOnly?: boolean;
 }
 
 const DateTBody: React.FC<DateTBodyProps> = props => {
@@ -51,10 +52,12 @@ const DateTBody: React.FC<DateTBodyProps> = props => {
     dateRender,
     disabledDate,
     hoverValue,
+    weekOnly,
   } = props;
 
   // very much className
   const cellClass = `${prefixCls}-cell`;
+  const weekCellClass = `${prefixCls}-week-cell`;
   const weekNumberCellClass = `${prefixCls}-week-number-cell`;
   const dateClass = `${prefixCls}-date`;
   const todayClass = `${prefixCls}-today`;
@@ -86,21 +89,31 @@ const DateTBody: React.FC<DateTBodyProps> = props => {
   lastMonth1.add(0 - lastMonthDiffDay, 'days');
   let passed = 0;
 
-  for (iIndex = 0; iIndex < DateConstants.DATE_ROW_COUNT; iIndex += 1) {
-    for (jIndex = 0; jIndex < DateConstants.DATE_COL_COUNT; jIndex += 1) {
-      current = lastMonth1;
-      if (passed) {
-        current = current.clone();
-        current.add(passed, 'days');
-      }
+  if (weekOnly) {
+    // First day of current week
+    current = value.clone().weekday(0);
+    for (let i = 0; i < 7; i += 1) {
+      current = current.clone();
+      current.add(1, 'days');
       dateTable.push(current);
-      passed += 1;
+    }
+  } else {
+    for (iIndex = 0; iIndex < DateConstants.DATE_ROW_COUNT; iIndex += 1) {
+      for (jIndex = 0; jIndex < DateConstants.DATE_COL_COUNT; jIndex += 1) {
+        current = lastMonth1;
+        if (passed) {
+          current = current.clone();
+          current.add(passed, 'days');
+        }
+        dateTable.push(current);
+        passed += 1;
+      }
     }
   }
   const tableHtml = [];
   passed = 0;
 
-  for (iIndex = 0; iIndex < DateConstants.DATE_ROW_COUNT; iIndex += 1) {
+  for (iIndex = 0; iIndex < (weekOnly ? 1 : DateConstants.DATE_ROW_COUNT); iIndex += 1) {
     let isCurrentWeek;
     let weekNumberCell;
     let isActiveWeek = false;
@@ -122,7 +135,7 @@ const DateTBody: React.FC<DateTBodyProps> = props => {
       if (jIndex > 0) {
         last = dateTable[passed - 1];
       }
-      let cls = cellClass;
+      let cls = weekOnly ? weekCellClass : cellClass;
       let disabled = false;
       let selected = false;
 

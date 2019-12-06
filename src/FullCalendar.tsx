@@ -237,7 +237,7 @@ class FullCalendar extends React.Component<FullCalendarProps, FullCalendarState>
     }
 
     const table =
-      type === 'date' ? (
+      type === 'date' || type === 'week' ? (
         <DateTable
           dateRender={props.dateCellRender}
           contentRender={props.dateCellContentRender}
@@ -246,6 +246,7 @@ class FullCalendar extends React.Component<FullCalendarProps, FullCalendarState>
           onSelect={this.onSelect}
           value={value}
           disabledDate={disabledDate}
+          weekOnly={type === 'week'}
         />
       ) : (
         <MonthTable

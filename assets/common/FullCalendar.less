@@ -8,11 +8,16 @@
     border-bottom: 1px solid #ccc;
     overflow: hidden;
 
+    &-week-select,
     &-month-select,
     &-year-select {
       width: 70px;
       float: right;
       margin-right: 5px;
+    }
+
+    &-week-select {
+      width: 110px !important;
     }
 
     &-switcher {
@@ -66,6 +71,7 @@
       padding: 0;
     }
     &-cell .@{prefixClass}-date,
+    &-week-cell .@{prefixClass}-date,
     &-month-panel-cell .@{prefixClass}-month-panel-month {
       display: block;
       height: 116px;
@@ -76,6 +82,10 @@
       border-top: 2px solid #eee;
       text-align: right;
       padding-right: 8px;
+    }
+    &-week-cell .@{prefixClass}-date {
+      min-height: 400px;
+      height: 80vh;
     }
     &-selected-day .@{prefixClass}-date,
     &-month-panel-selected-cell .@{prefixClass}-month-panel-month {
