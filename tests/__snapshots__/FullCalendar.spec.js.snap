@@ -696,6 +696,11 @@ exports[`FullCalendar renders date mode correctly 1`] = `
       class="rc-calendar-full-header-switcher"
     >
       <span
+        class="rc-calendar-full-header-switcher-normal"
+      >
+        Week
+      </span>
+      <span
         class="rc-calendar-full-header-switcher-focus"
       >
         Month
@@ -1474,6 +1479,11 @@ exports[`FullCalendar renders fullscreen correctly 1`] = `
     <span
       class="rc-calendar-full-header-switcher"
     >
+      <span
+        class="rc-calendar-full-header-switcher-normal"
+      >
+        Week
+      </span>
       <span
         class="rc-calendar-full-header-switcher-focus"
       >
@@ -2256,6 +2266,11 @@ exports[`FullCalendar renders month mode correctly 1`] = `
       <span
         class="rc-calendar-full-header-switcher-normal"
       >
+        Week
+      </span>
+      <span
+        class="rc-calendar-full-header-switcher-normal"
+      >
         Month
       </span>
       <span
@@ -2481,6 +2496,11 @@ exports[`FullCalendar type renders defaultType correctly 1`] = `
     <span
       class="rc-calendar-full-header-switcher"
     >
+      <span
+        class="rc-calendar-full-header-switcher-normal"
+      >
+        Week
+      </span>
       <span
         class="rc-calendar-full-header-switcher-focus"
       >

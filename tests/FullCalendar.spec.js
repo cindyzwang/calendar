@@ -43,8 +43,11 @@ describe('FullCalendar', () => {
     it('fires onTypeChange', () => {
       const handleTypeChange = jest.fn();
       const wrapper = mount(<FullCalendar onTypeChange={handleTypeChange} Select={Select} />);
-      wrapper.find('.rc-calendar-full-header-switcher-normal').simulate('click');
-      expect(handleTypeChange).toHaveBeenCalledWith('month');
+      wrapper
+        .find('.rc-calendar-full-header-switcher-normal')
+        .first()
+        .simulate('click');
+      expect(handleTypeChange).toHaveBeenCalledWith('week');
     });
   });
 
